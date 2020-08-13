@@ -6,7 +6,15 @@ const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE
 
 module.exports = {
   siteMetadata: {
-    siteTitleAlt: `Minimal Blog - Gatsby Theme`,
+    siteTitle: `Terminal Monk`,
+    siteTitleAlt: `Terminal Monk`,
+    siteHeadline: `Ragzzy's personal blog`,
+    siteUrl: `https://terminalmonk.com`,
+    author: `Raghuram Iyer 'Ragzzy-R'`,
+    siteDescription: '',
+    siteLanguage: `en`,
+    // Used for og:image and must be placed inside the `static` folder
+    siteImage: `/banner.jpg`,
   },
   plugins: [
     {
@@ -25,12 +33,12 @@ module.exports = {
         ],
         externalLinks: [
           {
-            name: `Twitter`,
-            url: `https://twitter.com/lekoarts_de`,
+            name: `LinkedIn`,
+            url: `https://www.linkedin.com/in/ragzzyr/`,
           },
           {
-            name: `Instagram`,
-            url: `https://www.instagram.com/lekoarts.de/`,
+            name: `Youtube`,
+            url: `https://www.youtube.com/user/raghuram8892`,
           },
         ],
       },
