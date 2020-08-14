@@ -41,7 +41,7 @@ This post tries to explain what the hell is going on here.
 
 ### Spec is The Bible
 As far as today's JS is concerned, The only book you ever need for your afterlife is the [ECMAScript Specification](https://www.ecma-international.org/publications/files/ECMA-ST/ECMA-262.pdf).
-The spec is your Bible, the spec is your friend, the spec is a blessing by the Gods of Olympus. So today we will see
+The spec is your Bible, the spec is your friend, the spec is a blessing by the Gods of Olympus. So let's see
 what the Spec say about the equality operator.
 
 #### Abstract Operations
@@ -50,37 +50,37 @@ well... abstract. They mean a concept but not particularly an implementation. So
 called
 
 ```js
-makeSambhar()
+makeSambar()
 ```
 
 The above abstract operation, although look like a function, is not really a function. It is represented like function
-because its easy to write. But it just means *makeSambhar is an operation that somehow makes sambhar for us*
+because its easy to write. But it just means *makeSambar is an operation that somehow makes* <a href="https://en.wikipedia.org/wiki/Sambar_(dish)" target="_blank">Sambar</a> *for us*
 
-So when you  look up the spec for a JS function, (e.g) `Food.Prototype.makeSambharSadham()`
+So when you  look up the spec for a JS function, (e.g) <a href="https://www.indianhealthyrecipes.com/Sambar-sadam-Sambar-rice/" target="_blank">Food.Prototype.makeSambarSaadham()</a>
 
 the algorithm might look something like this.
 
 
 * let *r* be the result of `makeSaadham(Rice)`.
-* let *s* be the result of `makeSambhar(dhaal, onion, sambharPowder, corianderLeaves)`.
-* `return` `mixRiceAndSadham(r,s)`
+* let *s* be the result of `makeSambar(dhaal, onion, SambarPowder, corianderLeaves)`.
+* `return` `mixRiceAndSaadham(r,s)`
 
 
-in the above algorithm, `makeSaadham`, `makeSambhar` and `mixRiceAndSadham` are abstract operations which are not
-of interest in the current algorithm as long as we got saadham and sambhar and mix them together properly. These
+in the above algorithm, `makeSaadham`, `makeSambar` and `mixRiceAndSaadham` are abstract operations which are not
+of interest in the current algorithm as long as we got saadham and Sambar and mix them together properly. These
 operations might be implemented differently in each JS Engine, based on a lot of other things. But the spec guarantee
-that when you call `makeSambharSadham()`, we first make the saadham, then the sambhar and then mix them together and
-return the sambarSaadham. That is all that matters.
+that when you call `makeSambarSaadham()`, we first make the saadham, then the Sambar and then mix them together and
+return the SambarSaadham. That is all that matters.
 
 The function like syntax is just for ease of writing/printing. The algorithm might very well be written like this
 
-* make sadham first using rice.
-* make sambhar using dhaal, onion, sambharPowder, corianderLeaves.
-* return a good bowl of saadham and sambhar mixed into a sambhar sadham.
+* make Saadham first using rice.
+* make Sambar using dhaal, onion, SambarPowder, corianderLeaves.
+* return a good bowl of saadham and Sambar mixed into a Sambar Saadham.
 
 now ask yourself.
 
-* does it matter if the sambhar is cooked on a electric stove or a gas stove or just with a bunch of coal and fire?
+* does it matter if the Sambar is cooked on a electric stove or a gas stove or just with a bunch of coal and fire?
 * does it matter if the rice was cooked in a pressure cooker or in old style water and vessel(filtering method)
 
 no right? so it can be abstract as long it gets the job done.
@@ -128,7 +128,7 @@ Step **5** covers the scenario where x is a String and y is a number. If thats t
 perform the comparison process again.
 
 Before going any further. You might have already noticed how the algorithm is always preferring to keep things as
-numbers. So lets take a step back and think about it. So if one of the value is a number while the other is not, the
+numbers. Lets take a step back and think about it. So if one of the value is a number while the other is not, the
 algorithm prefers the latter to be a number too and performs a ToNumber() on it.
 
 moving on, I'm going to skip Step **6** and **7**, because they deal with BigInt's which is not yet widely implemented.
@@ -200,13 +200,13 @@ that's the kind of confidence you get when you have a strong understanding of th
 #### About NaN
 
 Many people I've seen complain that it is stupid that `NaN === NaN` or `NaN == NaN` is **false**. This is not a thing
-that is specific to JS. A lot of languages does this. This is because the standards for floating point arithmetic
+that is specific to JS. A lot of languages do this. This is because the standards for floating point arithmetic
 treats it that way in its spec [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754). One way I remember this is, assume the following
 example,
 
 ```js
-const x = toNumber('Banana'); //NaN because you cant convert banana to a number silly.
-const y = toNumber('Apple'); // NaN duh!
+const x = toNumber('Banana'); //NaN. because you cant convert a banana to number silly.
+const y = toNumber('Apple'); // NaN. duh!
 
 if(x == y) { // NaN == NaN ?
  console.log("That can't be right");
@@ -220,25 +220,33 @@ it in JS this time.
 ```js
 const age = getAgeFromInputBox();
 const ageInNumber = Number(age); /* because we got string from inputBox */
-if(ageInNumber != NaN) // or (ageInNumber !== NaN) {
- if(ageInNumber > 18) {
+if(ageInNumber == NaN) // or (ageInNumber === NaN) {
+    alert('Please provide a valid age');
+}
+else {
+if(ageInNumber > 18) {
   alert('eligible for voting');
  }
 }
+}
 ```
 
-the problem with the above code is, it will never get past the NaN check. because NaN === NaN is false. To fix this,
-JS provides a method [isNaN()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isNaN).
+the problem with the above code is, the if check for NaN will always fail and it will break if the user gives a age that is not a number.
+because NaN === NaN is false. To fix this, JS provides a method [isNaN()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isNaN).
 
 rewriting the above program.
 
 ```js
 const age = getAgeFromInputBox();
 const ageInNumber = Number(age); /* because we got string from inputBox */
-if(!isNaN(ageInNumber))
- if(ageInNumber > 18) {
+if(isNaN(ageInNumber)) {
+    alert('Please provide a valid age');
+}
+else {
+if(ageInNumber > 18) {
   alert('eligible for voting');
  }
+}
 }
 ```
 
