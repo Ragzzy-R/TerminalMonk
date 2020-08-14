@@ -46,30 +46,30 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: process.env.GOOGLE_ANALYTICS_ID,
+        trackingId: "UA-175440000-1",
       },
     },
     `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `minimal-blog - @lekoarts/gatsby-theme-minimal-blog`,
-        short_name: `minimal-blog`,
-        description: `Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and code highlighting.`,
+        name: `Terminal Monk`,
+        short_name: `terminal_monk`,
+        description: `Just another noob's closet in the multiverse`,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#6B46C1`,
         display: `standalone`,
         icons: [
           {
-            src: `/android-chrome-192x192.png`,
+            src: `/android-chrome-192x192.jpg`,
             sizes: `192x192`,
-            type: `image/png`,
+            type: `image/jpg`,
           },
           {
-            src: `/android-chrome-512x512.png`,
+            src: `/android-chrome-512x512.jpg`,
             sizes: `512x512`,
-            type: `image/png`,
+            type: `image/jpg`,
           },
         ],
       },
