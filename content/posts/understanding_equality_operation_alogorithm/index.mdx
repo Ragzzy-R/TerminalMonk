@@ -50,40 +50,48 @@ well... abstract. They mean a concept but not particularly an implementation. So
 called
 
 ```js
-makeSambar()
+getIceCream()
 ```
 
 The above abstract operation, although look like a function, is not really a function. It is represented like function
-because its easy to write. But it just means *makeSambar is an operation that somehow makes* <a href="https://en.wikipedia.org/wiki/Sambar_(dish)" target="_blank">Sambar</a> *for us*
+because its easy to write. But it just means *makeIceCream is an operation that somehow makes Ice cream for us*
 
-So when you  look up the spec for a JS function, (e.g) <a href="https://www.indianhealthyrecipes.com/Sambar-sadam-Sambar-rice/" target="_blank">Food.Prototype.makeSambarSaadham()</a>
+So when you  look up the spec for a JS function, (e.g) `Food.Prototype.makeOreoShake()`
 
 the algorithm might look something like this.
 
 
-* let *r* be the result of `makeSaadham(Rice)`.
-* let *s* be the result of `makeSambar(dhaal, onion, SambarPowder, corianderLeaves)`.
-* `return` `mixRiceAndSaadham(r,s)`
+* let *o* be the result of `getOreo(8)`.
+* let *i* be the result of `getIceCream(vanilla, 2)`.
+* let *m* be the result of `getMilk(1)`.
+* let *b* be the result of `blenderify(o, i, m)`.
+* `return` b.
 
 
-in the above algorithm, `makeSaadham`, `makeSambar` and `mixRiceAndSaadham` are abstract operations which are not
-of interest in the current algorithm as long as we got saadham and Sambar and mix them together properly. These
+in the above algorithm, `getOreo`, `getIceCream`, `getMilk` and `blenderify` are all abstract operations which are not
+of interest in the current algorithm as long as we got our oreo, milk, iceCream and blend them together properly. These
 operations might be implemented differently in each JS Engine, based on a lot of other things. But the spec guarantee
-that when you call `makeSambarSaadham()`, we first make the saadham, then the Sambar and then mix them together and
-return the SambarSaadham. That is all that matters.
+that when you call `makeOreoShake()`, we first get the oreos, then the vanilla ice cream and then get some milk and
+mix them together and return the oreo milkshake. That is all that matters.
 
 The function like syntax is just for ease of writing/printing. The algorithm might very well be written like this
 
-* make Saadham first using rice.
-* make Sambar using dhaal, onion, SambarPowder, corianderLeaves.
-* return a good bowl of saadham and Sambar mixed into a Sambar Saadham.
+* get 8 Oreos.
+* get 2 cups of vanilla ice-cream.
+* get 1 cup of milk.
+* mix all of them in blender and return ice-cold oreo shake.
 
 now ask yourself.
 
-* does it matter if the Sambar is cooked on a electric stove or a gas stove or just with a bunch of coal and fire?
-* does it matter if the rice was cooked in a pressure cooker or in old style water and vessel(filtering method)
+* does it matter if the Oreos come from shop A or shop B?
+* does it matter if the Ice cream is Baskin and Robins or Kwality walls?
 
-no right? so it can be abstract as long it gets the job done.
+Well it does if you are picky about ur ingredients. But the recipe itself don't demands Baskin and Robins over Kwality
+walls. you are going to get an Oreo Shake anyway. Although you as a chef(JS Engine), might getIceCream() differently.
+Some of you might get B&R while some get Kwality Walls or if you fancy it, make your own ice cream.
+
+you see how the actual `getIceCream`'s implementation don't matter but the *Operation of getting ice-cream* is all that
+matters? that is what an abstract operation is.
 
 The reason I'm explaining the abstract operations this much is because in our next section, the algorithm is filled with
 such abstract operations and you should not confuse them with real functions getting called all over the places.
