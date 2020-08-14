@@ -220,7 +220,7 @@ it in JS this time.
 ```js
 const age = getAgeFromInputBox();
 const ageInNumber = Number(age); /* because we got string from inputBox */
-if(ageInNumber == NaN) // or (ageInNumber === NaN) {
+if(ageInNumber != NaN) // or (ageInNumber !== NaN) {
  if(ageInNumber > 18) {
   alert('eligible for voting');
  }
@@ -235,7 +235,7 @@ rewriting the above program.
 ```js
 const age = getAgeFromInputBox();
 const ageInNumber = Number(age); /* because we got string from inputBox */
-if(isNaN(ageInNumber))
+if(!isNaN(ageInNumber))
  if(ageInNumber > 18) {
   alert('eligible for voting');
  }
